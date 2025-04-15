@@ -1,6 +1,10 @@
 <template>
   <Sidebar ref="sidebar" :title="$t('setting.title')">
-    <div class="sidebarContent" :class="{ isDark: isDark }" v-if="data">
+    <div
+      class="sidebarContent customScrollbar"
+      :class="{ isDark: isDark }"
+      v-if="configData"
+    >
       <!-- 水印 -->
       <div class="row">
         <!-- 是否显示水印 -->
@@ -230,6 +234,28 @@
           >
         </div>
       </div>
+      <!-- 节点连线样式是否允许继承祖先的连线样式 -->
+      <div class="row">
+        <div class="rowItem">
+          <el-checkbox
+            v-model="config.enableInheritAncestorLineStyle"
+            @change="
+              updateOtherConfig('enableInheritAncestorLineStyle', $event)
+            "
+            >{{ $t('setting.enableInheritAncestorLineStyle') }}</el-checkbox
+          >
+        </div>
+      </div>
+      <!-- 是否开启ai功能 -->
+      <div class="row">
+        <div class="rowItem">
+          <el-checkbox
+            v-model="localConfigs.enableAi"
+            @change="updateLocalConfig('enableAi', $event)"
+            >{{ $t('setting.enableAi') }}</el-checkbox
+          >
+        </div>
+      </div>
       <!-- 是否开启手绘风格 -->
       <div class="row" v-if="supportHandDrawnLikeStyle">
         <div class="rowItem">
@@ -237,6 +263,30 @@
             v-model="localConfigs.isUseHandDrawnLikeStyle"
             @change="updateLocalConfig('isUseHandDrawnLikeStyle', $event)"
             >{{ $t('setting.isUseHandDrawnLikeStyle') }}</el-checkbox
+          >
+        </div>
+      </div>
+      <!-- 是否开启动量效果 -->
+      <div class="row" v-if="supportMomentum">
+        <div class="rowItem">
+          <el-checkbox
+            v-model="localConfigs.isUseMomentum"
+            @change="updateLocalConfig('isUseMomentum', $event)"
+            >{{ $t('setting.isUseMomentum') }}</el-checkbox
+          >
+        </div>
+      </div>
+      <!-- 是否开启演示模式的填空功能 -->
+      <div class="row">
+        <div class="rowItem">
+          <el-checkbox
+            v-model="config.demonstrateConfig.openBlankMode"
+            @change="
+              value => {
+                updateOtherConfig('openBlankMode', value)
+              }
+            "
+            >{{ $t('setting.openBlankMode') }}</el-checkbox
           >
         </div>
       </div>
@@ -356,10 +406,10 @@
 </template>
 
 <script>
-import Sidebar from './Sidebar'
+import Sidebar from './Sidebar.vue'
 import { storeConfig } from '@/api'
 import { mapState, mapMutations } from 'vuex'
-import Color from './Color'
+import Color from './Color.vue'
 
 export default {
   components: {
@@ -367,8 +417,8 @@ export default {
     Color
   },
   props: {
-    data: {
-      type: [Object, null],
+    configData: {
+      type: Object,
       default: null
     },
     mindMap: {
@@ -387,7 +437,11 @@ export default {
         alwaysShowExpandBtn: false,
         enableAutoEnterTextEditWhenKeydown: true,
         imgTextMargin: 0,
-        textContentMargin: 0
+        textContentMargin: 0,
+        enableInheritAncestorLineStyle: false,
+        demonstrateConfig: {
+          openBlankMode: false
+        }
       },
       watermarkConfig: {
         show: false,
@@ -407,7 +461,9 @@ export default {
       localConfigs: {
         isShowScrollbar: false,
         isUseHandDrawnLikeStyle: false,
-        enableDragImport: false
+        isUseMomentum: false,
+        enableDragImport: false,
+        enableAi: false
       }
     }
   },
@@ -416,7 +472,8 @@ export default {
       activeSidebar: state => state.activeSidebar,
       localConfig: state => state.localConfig,
       isDark: state => state.localConfig.isDark,
-      supportHandDrawnLikeStyle: state => state.supportHandDrawnLikeStyle
+      supportHandDrawnLikeStyle: state => state.supportHandDrawnLikeStyle,
+      supportMomentum: state => state.supportMomentum
     })
   },
   watch: {
@@ -443,7 +500,13 @@ export default {
     // 初始化其他配置
     initConfig() {
       Object.keys(this.config).forEach(key => {
-        this.config[key] = this.mindMap.getConfig(key)
+        if (typeof this.config[key] === 'object') {
+          this.config[key] = {
+            ...(this.mindMap.getConfig(key) || {})
+          }
+        } else {
+          this.config[key] = this.mindMap.getConfig(key)
+        }
       })
     },
 
@@ -471,15 +534,32 @@ export default {
 
     // 更新其他配置
     updateOtherConfig(key, value) {
-      this.mindMap.updateConfig({
-        [key]: value
-      })
-      this.data.config = this.data.config || {}
-      this.data.config[key] = value
-      storeConfig({
-        config: this.data.config
-      })
-      if (['alwaysShowExpandBtn', 'imgTextMargin', 'textContentMargin'].includes(key)) {
+      if (key === 'openBlankMode') {
+        this.mindMap.updateConfig({
+          demonstrateConfig: {
+            ...(this.mindMap.getConfig('demonstrateConfig') || {}),
+            openBlankMode: value
+          }
+        })
+        if (!this.configData.demonstrateConfig) {
+          this.configData.demonstrateConfig = {}
+        }
+        this.configData.demonstrateConfig[key] = value
+      } else {
+        this.mindMap.updateConfig({
+          [key]: value
+        })
+        this.configData[key] = value
+      }
+      storeConfig(this.configData)
+      if (
+        [
+          'alwaysShowExpandBtn',
+          'imgTextMargin',
+          'textContentMargin',
+          'enableInheritAncestorLineStyle'
+        ].includes(key)
+      ) {
         this.mindMap.reRender()
       }
     },
@@ -492,13 +572,10 @@ export default {
         this.mindMap.watermark.updateWatermark({
           ...config
         })
-        this.data.config = this.data.config || {}
-        this.data.config.watermarkConfig = this.mindMap.getConfig(
+        this.configData.watermarkConfig = this.mindMap.getConfig(
           'watermarkConfig'
         )
-        storeConfig({
-          config: this.data.config
-        })
+        storeConfig(this.configData)
       }, 300)
     },
 
