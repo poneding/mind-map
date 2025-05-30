@@ -1,23 +1,23 @@
-// 字体列表
+// Danh sách phông chữ
 export const fontFamilyList = [
   {
-    name: 'Song Ti',
+    name: 'Song Thân',
     value: '宋体, SimSun, Songti SC'
   },
   {
-    name: 'Microsoft Yahei',
+    name: 'Microsoft và Yahoo',
     value: '微软雅黑, Microsoft YaHei'
   },
   {
-    name: 'Italics',
+    name: 'Chữ Khải',
     value: '楷体, 楷体_GB2312, SimKai, STKaiti'
   },
   {
-    name: 'Boldface',
+    name: 'Da đen',
     value: '黑体, SimHei, Heiti SC'
   },
   {
-    name: 'Official script',
+    name: 'Lệ Thư',
     value: '隶书, SimLi'
   },
   {
@@ -54,388 +54,412 @@ export const fontFamilyList = [
   }
 ]
 
-// 边框样式
+// Kiểu viền
 export const borderDasharrayList = [
   {
-    name: 'Solid',
+    name: 'Dòng rắn',
     value: 'none'
   },
   {
-    name: 'Dotted1',
+    name: 'Đường chấm 1',
     value: '5,5'
   },
   {
-    name: 'Dotted2',
+    name: 'Đường chấm 2',
     value: '10,10'
   },
   {
-    name: 'Dotted3',
+    name: 'Đường chấm 3',
     value: '20,10,5,5,5,10'
   },
   {
-    name: 'Dotted4',
+    name: 'Đường chấm 4',
     value: '5,5,1,5'
   },
   {
-    name: 'Dotted5',
+    name: 'Đường chấm 5',
     value: '15,10,5,10,15'
   },
   {
-    name: 'Dotted6',
+    name: 'Đường chấm 6',
     value: '1,5'
   },
   {
-    name: 'Dotted7',
+    name: 'Đường chấm 7',
     value: '6,4'
   }
 ]
 
-// 连线风格
+// Kiểu kết nối
 export const lineStyleList = [
   {
-    name: 'Straight',
+    name: 'Đường thẳng',
     value: 'straight'
   },
   {
-    name: 'Curve',
+    name: 'Đường cong',
     value: 'curve'
   },
   {
-    name: 'Direct',
+    name: 'Trực tiếp',
     value: 'direct'
   }
 ]
 
-// 曲线风格中，根节点样式是否和其他节点保持一致
+// Trong một kiểu đường cong, kiểu nút gốc có giống với các nút khác hay không
 export const rootLineKeepSameInCurveList = [
   {
-    name: 'Bracket',
+    name: 'ngoặc đơn',
     value: false
   },
   {
-    name: 'Brace',
+    name: 'ngoặc nhọn',
     value: true
   }
 ]
 
-// 图片重复方式
+// Cách lặp lại hình ảnh
 export const backgroundRepeatList = [
   {
-    name: 'No repeat',
+    name: 'Không lặp lại',
     value: 'no-repeat'
   },
   {
-    name: 'Repeat',
+    name: 'Lặp lại',
     value: 'repeat'
   },
   {
-    name: 'Repeat-x',
+    name: 'Lặp lại hướng ngang',
     value: 'repeat-x'
   },
   {
-    name: 'Repeat-y',
+    name: 'Lặp lại theo chiều dọc',
     value: 'repeat-y'
   }
 ]
 
-// 背景图片定位
+// Định vị ảnh nền
 export const backgroundPositionList = [
   {
-    name: 'Default',
+    name: 'Mặc định',
     value: '0% 0%'
   },
   {
-    name: 'Left top',
+    name: 'Trái trên',
     value: 'left top'
   },
   {
-    name: 'Left center',
+    name: 'Trái giữa',
     value: 'left center'
   },
   {
-    name: 'Left bottom',
+    name: 'Trái dưới',
     value: 'left bottom'
   },
   {
-    name: 'Right top',
+    name: 'Phải trên',
     value: 'right top'
   },
   {
-    name: 'Right center',
+    name: 'Phải giữa',
     value: 'right center'
   },
   {
-    name: 'Right bottom',
+    name: 'Dưới bên phải',
     value: 'right bottom'
   },
   {
-    name: 'Center top',
+    name: 'Giữa trên',
     value: 'center top'
   },
   {
-    name: 'Center center',
+    name: 'Ở giữa',
     value: 'center center'
   },
   {
-    name: 'Center bottom',
+    name: 'Dưới',
     value: 'center bottom'
   }
 ]
 
+// Cỡ ảnh nền
+export const backgroundSizeList = [
+  {
+    name: 'Tự động',
+    value: 'auto'
+  },
+  {
+    name: 'Ghi đè',
+    value: 'cover'
+  },
+  {
+    name: 'Giữ',
+    value: 'contain'
+  }
+]
+
+// Lưu trữ dữ liệu
+export const store = {
+  sidebarZIndex: 1 //Thanh bên zIndex
+}
 const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0
 const ctrl = isMac ? '⌘' : 'Ctrl'
 const enter = isMac ? 'Return' : 'Enter'
 const macFn = isMac ? 'fn + ' : ''
 
-// 背景图片大小
-export const backgroundSizeList = [
-  {
-    name: 'Auto',
-    value: 'auto'
-  },
-  {
-    name: 'Cover',
-    value: 'cover'
-  },
-  {
-    name: 'Contain',
-    value: 'contain'
-  }
-]
-
-// 快捷键列表
+// Danh sách phím tắt
 export const shortcutKeyList = [
   {
-    type: 'Node operation',
+    type: 'Hoạt động nút',
     list: [
       {
         icon: 'icontianjiazijiedian',
-        name: 'Inert child node',
+        name: 'Chèn nút thấp hơn',
         value: 'Tab | Insert'
       },
       {
         icon: 'iconjiedian',
-        name: 'Insert sibling node',
+        name: 'Chèn nút ngang hàng',
         value: enter
       },
       {
         icon: 'icondodeparent',
-        name: 'Insert parent node',
+        name: 'Chèn nút cha',
         value: 'Shift + Tab'
       },
       {
         icon: 'iconshangyi',
-        name: 'Move up node',
+        name: 'Chuyển nút lên',
         value: `${ctrl} + ↑`
       },
       {
         icon: 'iconxiayi',
-        name: 'Move down node',
+        name: 'Di chuyển nút xuống',
         value: `${ctrl} + ↓`
       },
       {
         icon: 'icongaikuozonglan',
-        name: 'Insert summary',
+        name: 'Chèn tóm tắt',
         value: `${ctrl} + G`
       },
       {
         icon: 'iconzhankai',
-        name: 'Expand/UnExpand node',
+        name: 'Mở rộng/thu gọn các nút',
         value: '/'
       },
       {
         icon: 'iconshanchu',
-        name: 'Delete node',
+        name: 'Xóa nút',
         value: 'Delete | Backspace'
       },
       {
         icon: 'iconshanchu',
-        name: 'Delete current node',
+        name: 'Chỉ xóa nút hiện tại',
         value: 'Shift + Backspace'
       },
       {
         icon: 'iconfuzhi',
-        name: 'Copy node',
+        name: 'Sao chép nút',
         value: `${ctrl} + C`
       },
       {
         icon: 'iconjianqie',
-        name: 'Cut node',
+        name: 'Cắt nút',
         value: `${ctrl} + X`
       },
       {
         icon: 'iconniantie',
-        name: 'Paste node',
+        name: 'Dán nút',
         value: `${ctrl} + V`
       },
       {
         icon: 'iconbianji',
-        name: 'Edit node',
+        name: 'Sửa nút',
         value: macFn + 'F2'
       },
       {
         icon: 'iconhuanhang',
-        name: 'Text Wrap',
+        name: 'Dòng mới',
         value: `Shift + ${enter}`
       },
       {
         icon: 'iconhoutui-shi',
-        name: 'Undo',
+        name: 'Lùi lại',
         value: `${ctrl} + Z`
       },
       {
         icon: 'iconqianjin1',
-        name: 'Redo',
+        name: 'Tiến lên!',
         value: `${ctrl} + Y`
       },
       {
         icon: 'iconquanxuan',
-        name: 'Select All',
+        name: 'Chọn tất cả',
         value: `${ctrl} + A`
       },
       {
         icon: 'iconquanxuan',
-        name: 'Multiple choice',
-        value: `Right click / ${ctrl} + Left click`
+        name: 'Nhiều lựa chọn',
+        value: `Phải / ${ctrl} + Trái`
       },
       {
         icon: 'iconzhengli',
-        name: 'Arrange layout',
+        name: 'Name',
         value: `${ctrl} + L`
       },
       {
         icon: 'iconsousuo',
-        name: 'Search and Replace',
+        name: 'Tìm kiếm và thay thế',
         value: `${ctrl} + F`
       }
     ]
   },
   {
-    type: 'Canvas operation',
+    type: 'Hoạt động Canvas',
     list: [
       {
         icon: 'iconfangda',
-        name: 'Zoom in',
+        name: 'Phóng to',
         value: `${ctrl} + +`
       },
       {
         icon: 'iconsuoxiao',
-        name: 'Zoom out',
+        name: 'Thu nhỏ',
         value: `${ctrl} + -`
       },
       {
         icon: 'iconfangda',
-        name: 'Zoom in/Zoom out',
-        value: `${ctrl} + Mouse wheel`
+        name: 'Phóng to/Thu nhỏ',
+        value: `${ctrl} + Cuộn chuột`
       },
       {
         icon: 'icondingwei',
-        name: 'Back root node',
+        name: 'Trở lại Root Node',
         value: `${ctrl} + ${enter}`
       },
       {
         icon: 'iconquanping1',
-        name: 'fit canvas',
+        name: 'Thích nghi với Canvas',
         value: `${ctrl} + i`
       }
     ]
   },
   {
-    type: 'Outline Operation',
+    type: 'Hoạt động phác thảo',
     list: [
       {
         icon: 'iconhuanhang',
-        name: 'Text Wrap',
+        name: 'Dòng mới',
         value: `Shift + ${enter}`
       },
       {
         icon: 'iconshanchu',
-        name: 'Delete current node',
+        name: 'Xóa nút',
         value: 'Delete'
       },
       {
         icon: 'icontianjiazijiedian',
-        name: 'Inert child node',
+        name: 'Chèn nút thấp hơn',
         value: 'Tab'
       },
       {
         icon: 'iconjiedian',
-        name: 'Insert sibling node',
+        name: 'Chèn nút ngang hàng',
         value: enter
       },
       {
         icon: 'icondodeparent',
-        name: 'Move up one level',
+        name: 'Di chuyển lên một cấp',
         value: 'Shift + Tab'
       }
     ]
   }
 ]
 
-// 形状列表
+// Danh sách hình dạng
 export const shapeList = [
   {
-    name: 'Rectangle',
+    name: 'Hình chữ nhật',
     value: 'rectangle'
   },
   {
-    name: 'Diamond',
+    name: 'Kim cương',
     value: 'diamond'
   },
   {
-    name: 'Parallelogram',
+    name: 'Tứ giác song song',
     value: 'parallelogram'
   },
   {
-    name: 'Rounded rectangle',
+    name: 'Hình chữ nhật tròn',
     value: 'roundedRectangle'
   },
   {
-    name: 'Octagonal rectangle',
+    name: 'Hình chữ nhật bát giác',
     value: 'octagonalRectangle'
   },
   {
-    name: 'Outer triangular rectangle',
+    name: 'Hình chữ nhật tam giác ngoài',
     value: 'outerTriangularRectangle'
   },
   {
-    name: 'Inner triangular rectangle',
+    name: 'Hình chữ nhật tam giác bên trong',
     value: 'innerTriangularRectangle'
   },
   {
-    name: 'Ellipse',
+    name: 'Hình elip',
     value: 'ellipse'
   },
   {
-    name: 'Circle',
+    name: 'Vòng tròn',
     value: 'circle'
   }
 ]
 
-// 侧边栏列表
+// Danh sách đa ngôn ngữ
+export const langList = [
+  {
+    value: 'zh',
+    name: '简体中文'
+  },
+  {
+    value: 'zhtw',
+    name: '繁體中文'
+  },
+  {
+    value: 'en',
+    name: 'English'
+  },
+  {
+    value: 'vi',
+    name: 'Tiếng Việt'
+  }
+]
+
+// Danh sách thanh bên
 export const sidebarTriggerList = [
   {
-    name: 'Node style',
+    name: 'Kiểu nút',
     value: 'nodeStyle',
     icon: 'iconzhuti'
   },
   {
-    name: 'Base style',
+    name: 'Kiểu nền tảng',
     value: 'baseStyle',
     icon: 'iconyangshi'
   },
   {
-    name: 'Theme',
+    name: 'Chủ đề',
     value: 'theme',
     icon: 'iconjingzi'
   },
   {
-    name: 'Structure',
+    name: 'Cấu trúc',
     value: 'structure',
     icon: 'iconjiegou'
   },
   {
-    name: 'Outline',
+    name: 'Trang chủ',
     value: 'outline',
     icon: 'iconfuhao-dagangshu'
   },
@@ -445,86 +469,85 @@ export const sidebarTriggerList = [
   //   icon: 'iconAIshengcheng'
   // },
   {
-    name: 'Setting',
+    name: 'Thiết lập',
     value: 'setting',
     icon: 'iconshezhi'
-  },
+  }
   // {
-  //   name: 'ShortcutKey',
+  //   name: 'Phím tắt',
   //   value: 'shortcutKey',
   //   icon: 'iconjianpan'
   // }
 ]
 
-// 下载类型列表
+// Danh sách các loại tải xuống
 export const downTypeList = [
   {
-    name: '思绪 file',
+    name: '思绪Tài liệu',
     type: 'smm',
     icon: 'iconwenjian',
-    desc:
-      'SimpleMindMap private format, can be used for re import, and the client can directly edit it'
+    desc: 'SimpleMindMap Định dạng riêng tư, có thể được sử dụng để nhập lại, có thể được chỉnh sửa trực tiếp bởi khách hàng'
   },
   {
-    name: 'Image',
+    name: 'Hình ảnh',
     type: 'png',
     icon: 'iconPNG',
-    desc: 'Common image formats, suitable for viewing and sharing'
+    desc: 'Định dạng ảnh phổ biến, phù hợp để xem chia sẻ'
   },
   {
     name: 'SVG',
     type: 'svg',
     icon: 'iconSVG',
-    desc: 'Scalable Vector Graphics'
+    desc: 'Thu phóng đồ họa vector'
   },
   {
     name: 'PDF',
     type: 'pdf',
     icon: 'iconpdf',
-    desc: 'Suitable for viewing, browsing, and printing'
+    desc: 'Thích hợp để xem trình duyệt và in'
   },
   {
     name: 'Markdown',
     type: 'md',
     icon: 'iconmarkdown',
-    desc: 'MD text format, easy for other software to open'
+    desc: 'Định dạng văn bản md để dễ dàng mở phần mềm khác'
   },
   {
     name: 'XMind',
     type: 'xmind',
     icon: 'iconxmind',
-    desc: 'XMind software file'
+    desc: 'Định dạng phần mềm XMind'
   },
   {
     name: 'Txt',
     type: 'txt',
     icon: 'iconTXT',
-    desc: 'Plain text file'
+    desc: 'Tập tin văn bản thuần túy'
   },
   {
     name: 'Excel',
     type: 'xlsx',
     icon: 'iconfile-excel',
-    desc: 'Table text format, editable with Excel software'
+    desc: 'Dạng văn bản bảng, có thể chỉnh sửa bằng phần mềm Excel'
   },
   {
     name: 'FreeMind',
     type: 'mm',
     icon: 'iconfreemind',
-    desc: 'FreeMind software format'
+    desc: 'Định dạng phần mềm FreeMind'
   },
   {
     name: 'JSON',
     type: 'json',
     icon: 'iconjson',
-    desc: 'Popular data exchange format that can be used for re importing'
-  },
+    desc: 'Các định dạng trao đổi dữ liệu phổ biến có thể được sử dụng để nhập lại'
+  }
 ]
 
-// 编号类型列表
+// Danh sách các loại số
 export const numberTypeList = [
   {
-    name: 'None',
+    name: 'Không có số',
     value: ''
   },
   {
@@ -561,114 +584,114 @@ export const numberTypeList = [
   }
 ]
 
-// 编号层级列表
+// Không. Danh sách phân cấp
 export const numberLevelList = [
   {
-    name: '1 level',
+    name: 'Không. Tầng đầu tiên',
     value: 1
   },
   {
-    name: '2 level',
+    name: 'Không. Hai tầng đầu tiên',
     value: 2
   },
   {
-    name: '3 level',
+    name: 'Không. Ba tầng đầu tiên',
     value: 3
   },
   {
-    name: 'All level',
+    name: 'Không. Tất cả các lớp',
     value: 0
   }
 ]
 
-// 背景渐变方向
+// Hướng gradient nền
 export const linearGradientDirList = [
   {
-    name: 'Left to right',
+    name: 'Từ trái sang phải',
     value: '1',
     start: [0, 0],
     end: [1, 0]
   },
   {
-    name: 'Right to left',
+    name: 'Từ phải sang trái',
     value: '2',
     start: [1, 0],
     end: [0, 0]
   },
   {
-    name: 'Top to bottom',
+    name: 'Từ trên xuống dưới',
     value: '3',
     start: [0, 0],
     end: [0, 1]
   },
   {
-    name: 'Bottom to top',
+    name: 'Từ dưới lên trên',
     value: '4',
     start: [0, 1],
     end: [0, 0]
   },
   {
-    name: 'Left top to right bottom',
+    name: 'Từ trái lên phải xuống',
     value: '5',
     start: [0, 0],
     end: [1, 1]
   },
   {
-    name: 'Left bottom to right top',
+    name: 'Từ trái xuống phải',
     value: '6',
     start: [0, 1],
     end: [1, 0]
   },
   {
-    name: 'Right top to left bottom',
+    name: 'Từ trên xuống dưới',
     value: '7',
     start: [1, 0],
     end: [0, 1]
   },
   {
-    name: 'Right bottom to left top',
+    name: 'Từ phải xuống trái',
     value: '8',
     start: [1, 1],
     end: [0, 0]
   }
 ]
 
-// 文本对齐方式
+// Căn lề văn bản
 export const alignList = [
   {
-    name: 'Align left',
+    name: 'Trái:',
     value: 'left'
   },
   {
-    name: 'Align center',
+    name: 'Căn giữa',
     value: 'center'
   },
   {
-    name: 'Align right',
+    name: 'Phải',
     value: 'right'
   }
 ]
 
-// 结构列表
+// Danh sách cấu trúc
 export const layoutGroupList = [
   {
-    name: 'Logical structure',
+    name: 'Sơ đồ cấu trúc logic',
     list: ['logicalStructure', 'logicalStructureLeft']
   },
   {
-    name: 'Mind map',
+    name: 'Bản đồ tư duy',
     list: ['mindMap']
   },
   {
-    name: 'Organization structure',
+    name: 'Sơ đồ tổ chức',
     list: ['organizationStructure']
   },
   {
-    name: 'Catalog organization',
+    name: 'Sơ đồ tổ chức thư mục',
     list: ['catalogOrganization']
   },
   {
-    name: 'Timeline',
+    name: 'Dòng thời gian',
     list: [
       'timeline',
       'timeline2',
@@ -676,7 +699,7 @@ export const layoutGroupList = [
     ]
   },
   {
-    name: 'Fishbone',
+    name: 'Bản đồ Fishbone',
     list: ['fishbone']
   }
 ]
